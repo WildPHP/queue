@@ -1,0 +1,35 @@
+{
+  "name": "wildphp/queue",
+  "description": "Simple queue implementation, primarily used for WildPHP",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "require": {
+    "php": ">=7.0.0",
+
+    "react/promise": "^2",
+    "react/event-loop": "^1"
+  },
+  "autoload": {
+    "psr-4": {
+      "WildPHP\\Queue\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Yoshi2889",
+      "email": "rick.2889@gmail.com",
+      "homepage": "https://nanosector.nl",
+      "role": "Lead Developer"
+    }
+  ],
+  "config": {
+    "platform": {
+      "php": "7.0.0"
+    }
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master",
+    "phpunit/phpunit": "^6",
+    "squizlabs/php_codesniffer": "^3.0"
+  }
+}
