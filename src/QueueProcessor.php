@@ -105,4 +105,52 @@ class QueueProcessor
     {
         return $this->usedBurst;
     }
+
+    /**
+     * @return int
+     */
+    public function getBurstAmount(): int
+    {
+        return $this->burstAmount;
+    }
+
+    /**
+     * @param int $burstAmount
+     */
+    public function setBurstAmount(int $burstAmount): void
+    {
+        $this->burstAmount = $burstAmount;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBurstTrigger(): int
+    {
+        return $this->burstTrigger;
+    }
+
+    /**
+     * @param int $burstTrigger
+     */
+    public function setBurstTrigger(int $burstTrigger): void
+    {
+        $this->burstTrigger = $burstTrigger;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMessagesPerSecond(): int
+    {
+        return $this->messagesPerSecond;
+    }
+
+    /**
+     * @param int $messagesPerSecond
+     */
+    public function setMessagesPerSecond(int $messagesPerSecond): void
+    {
+        $this->messagesPerSecond = $messagesPerSecond;
+    }
 }

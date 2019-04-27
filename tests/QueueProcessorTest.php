@@ -82,4 +82,23 @@ class QueueProcessorTest extends TestCase
         $this->assertSame($queueItem5, await($queueItem5->getPromise(), $loop, 1));
         blockSleep(1, $loop);
     }
+
+    public function testDefaultValues()
+    {
+        $queue = new BaseQueue();
+        $loop = Factory::create();
+        $processor = new QueueProcessor($queue, $loop);
+
+        $this->assertEquals(1, $processor->getMessagesPerSecond());
+        $this->assertEquals(3, $processor->getBurstTrigger());
+        $this->assertEquals(5, $processor->getBurstAmount());
+
+        $processor->setMessagesPerSecond(2);
+        $processor->setBurstTrigger(4);
+        $processor->setBurstAmount(6);
+
+        $this->assertEquals(2, $processor->getMessagesPerSecond());
+        $this->assertEquals(4, $processor->getBurstTrigger());
+        $this->assertEquals(6, $processor->getBurstAmount());
+    }
 }
