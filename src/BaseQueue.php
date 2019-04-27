@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace WildPHP\Queue;
 
-use React\Promise\Deferred;
 use React\Promise\PromiseInterface;
 
 /**
@@ -30,7 +29,6 @@ class BaseQueue implements QueueInterface
      */
     public function enqueue(QueueItemInterface $queueItem): PromiseInterface
     {
-        $queueItem->setDeferred(new Deferred());
         $this->messageQueue[] = $queueItem;
         return $queueItem->getPromise();
     }
