@@ -16,11 +16,6 @@ use React\Promise\PromiseInterface;
 interface QueueItemInterface
 {
     /**
-     * @param Deferred $deferred
-     */
-    public function setDeferred(Deferred $deferred);
-
-    /**
      * @return Deferred
      */
     public function getDeferred(): Deferred;
