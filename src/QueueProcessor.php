@@ -96,4 +96,12 @@ class QueueProcessor
             $this->queue->remove($queueItem);
         }
     }
+
+    /**
+     * @return bool
+     */
+    public function usedBurst(): bool
+    {
+        return $this->usedBurst;
+    }
 }
