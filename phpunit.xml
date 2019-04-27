@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2019 The WildPHP Team
+  ~
+  ~ You should have received a copy of the MIT license with the project.
+  ~ See the LICENSE file for more information.
+  -->
+
+<phpunit bootstrap="vendor/autoload.php">
+    <testsuites>
+        <testsuite name="wildphp">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src/</directory>
+            <exclude>
+                <file>src/bootstrap.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
