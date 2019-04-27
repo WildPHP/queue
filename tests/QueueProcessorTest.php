@@ -78,9 +78,8 @@ class QueueProcessorTest extends TestCase
         $loop = Factory::create();
         $processor = new QueueProcessor($queue, $loop);
 
+        $this->assertTrue($processor->shouldUseBurst(5));
         $this->assertSame($queueItem5, await($queueItem5->getPromise(), $loop, 1));
-        $this->assertTrue($processor->usedBurst());
         blockSleep(1, $loop);
-        $this->assertFalse($processor->usedBurst());
     }
 }

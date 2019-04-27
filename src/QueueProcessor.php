@@ -66,34 +66,35 @@ class QueueProcessor
     }
 
     /**
+     * @param int $totalItemCount
+     * @return bool
+     */
+    public function shouldUseBurst(int $totalItemCount): bool
+    {
+        return !$this->usedBurst && $totalItemCount > $this->burstTrigger;
+    }
+
+    /**
      * @return void
      * @throws QueueException
      */
-    public function processDueItems()
+    public function processDueItems(): void
     {
         $items = $this->queue->toArray();
-        $amountToProcess = $this->messagesPerSecond;
 
-        // Use up our burst if we haven't used it and
-        if (!$this->usedBurst && count($items) > $this->burstTrigger) {
-            $amountToProcess = $this->burstAmount;
-            $this->usedBurst = true;
-        }
+        $this->usedBurst = $this->shouldUseBurst(count($items));
+        $amount = $this->usedBurst() ? $this->burstAmount : $this->messagesPerSecond;
 
-        $itemsToProcess = array_slice($items, 0, $amountToProcess);
-
-        // Reset the burst flag when the queue is now empty
-        if ($this->usedBurst && count($items) === 0) {
-            $this->usedBurst = false;
-        }
-
-        if (empty($itemsToProcess)) {
-            return;
-        }
+        $itemsToProcess = array_slice($items, 0, $amount);
 
         foreach ($itemsToProcess as $queueItem) {
             $queueItem->getDeferred()->resolve($queueItem);
             $this->queue->remove($queueItem);
+        }
+
+        // Reset the burst flag when the queue is now empty
+        if ($this->usedBurst && count($this->queue->toArray()) === 0) {
+            $this->usedBurst = false;
         }
     }
 
