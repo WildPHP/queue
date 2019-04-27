@@ -1,5 +1,4 @@
-# Command parsing library for WildPHP
-----------
+# Queue library for WildPHP
 [![Build Status](https://scrutinizer-ci.com/g/WildPHP/queue/badges/build.png)](https://scrutinizer-ci.com/g/WildPHP/queue/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/WildPHP/queue/badges/quality-score.png)](https://scrutinizer-ci.com/g/WildPHP/queue/?branch=master)
 [![Scrutinizer Code Coverage](https://scrutinizer-ci.com/g/WildPHP/queue/badges/coverage.png)](https://scrutinizer-ci.com/g/WildPHP/queue/code-structure/master/code-coverage)
@@ -8,8 +7,14 @@
 [![Total Downloads](https://poser.pugx.org/wildphp/queue/downloads)](https://packagist.org/packages/wildphp/queue)
 
 
-This library aims at making command parsing easy. Not only does it parse strings into commands and parameters, it allows
-you to define restrictions to parameters (so-called strategies) and do automatic type/content validation.
+This library defines a simple (message) queue interface. It sends out messages in the order they came in, but at a limited rate.
+
+Currently implemented features are:
+- Basic queue functionality
+- Callback queue items
+- Burst mode (send a batch of messages before throttling)
+
+The default values are to send 1 message per second with a burst rate of 5 messages. This suits IRC well.
 
 ## Installation
 To install this library, you will need [Composer](https://getcomposer.org/).
