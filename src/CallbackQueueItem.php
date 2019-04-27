@@ -1,32 +1,30 @@
 <?php
+/**
+ * Copyright 2019 The WildPHP Team
+ *
+ * You should have received a copy of the MIT license with the project.
+ * See the LICENSE file for more information.
+ */
 
-use React\Promise\Deferred;
-use React\Promise\PromiseInterface;
-use WildPHP\Queue\QueueItemInterface;
+declare(strict_types=1);
 
-class CallbackQueueItem implements QueueItemInterface
+namespace WildPHP\Queue;
+
+class CallbackQueueItem extends BaseQueueItem
 {
     /**
-     * @param Deferred $deferred
+     * CallableQueueItem constructor.
+     * @param callable $onSuccess
+     * @param callable|null $onFailure
      */
-public function setDeferred(Deferred $deferred)
+    public function __construct(callable $onSuccess, callable $onFailure = null)
     {
-        // TODO: Implement setDeferred() method.
-    }
+        parent::__construct();
 
-    /**
-     * @return Deferred
-     */
-    public function getDeferred(): Deferred
-    {
-        // TODO: Implement getDeferred() method.
-    }
-
-    /**
-     * @return PromiseInterface
-     */
-    public function getPromise(): PromiseInterface
-    {
-        // TODO: Implement getPromise() method.
+        $this->getPromise()->then(static function () use ($onSuccess) {
+            $onSuccess();
+        }, static function () use ($onFailure) {
+            $onFailure();
+        });
     }
 }
