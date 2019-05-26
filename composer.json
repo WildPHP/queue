@@ -3,12 +3,6 @@
   "description": "Simple queue implementation, primarily used for WildPHP",
   "minimum-stability": "stable",
   "license": "MIT",
-  "authors": [
-    {
-      "name": "NanoSector",
-      "email": "rick@nanosector.nl"
-    }
-  ],
   "autoload": {
     "psr-4": {
       "WildPHP\\Queue\\": "src/"
