@@ -3,34 +3,32 @@
   "description": "Simple queue implementation, primarily used for WildPHP",
   "minimum-stability": "stable",
   "license": "MIT",
-  "require": {
-    "php": ">=7.1.0",
-
-    "react/promise": "^2",
-    "react/event-loop": "^1"
-  },
+  "authors": [
+    {
+      "name": "Yoshi2889",
+      "email": "rick@nanosector.nl"
+    }
+  ],
   "autoload": {
     "psr-4": {
       "WildPHP\\Queue\\": "src/"
     }
   },
-  "authors": [
-    {
-      "name": "Yoshi2889",
-      "email": "rick.2889@gmail.com",
-      "homepage": "https://nanosector.nl",
-      "role": "Lead Developer"
-    }
-  ],
-  "config": {
-    "platform": {
-      "php": "7.1.0"
-    }
+  "require": {
+    "php": ">=7.2.0",
+
+    "react/promise": "^2",
+    "react/event-loop": "^1"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",
-    "phpunit/phpunit": "^7",
+    "phpunit/phpunit": "^8",
     "squizlabs/php_codesniffer": "^3.0",
     "clue/block-react": "^1"
+  },
+  "config": {
+    "platform": {
+      "php": "7.2.0"
+    }
   }
 }
