@@ -11,7 +11,7 @@
   "require": {
     "php": ">=7.2.0",
 
-    "react/promise": "^2",
+    "react/promise": "^3",
     "react/event-loop": "^1"
   },
   "require-dev": {
